@@ -1,0 +1,266 @@
+/* Estilos generales y variables (CSS3) */
+:root {
+    --color-primary: #007aff;          /* Azul (Generar) */
+    --color-primary-dark: #0056b3;
+    --color-secondary: #34c759;         /* Verde (Imprimir) */
+    --color-secondary-dark: #2a9e46;
+    
+    /* --- NUEVAS VARIABLES DE COLOR --- */
+    --color-download: #ffc107;         /* Amarillo (Descargar) */
+    --color-download-dark: #e0a800;
+    --color-copy: #dc3545;             /* Rojo (Copiar) */
+    --color-copy-dark: #c82333;
+    
+    --color-light-gray: #f0f0f0;
+    --color-text: #333;
+    --color-background: #f4f7f6;
+    --color-white: #ffffff;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: var(--color-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #1a1a1a;
+    margin-top: 0;
+    font-size: 1.75rem;
+}
+
+/* Área de entrada */
+.input-area {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.input-area label {
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+/* Wrapper para Input y Botón Limpiar */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#texto-input {
+    padding: 0.85rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%; 
+    padding-right: 3rem; 
+}
+
+#texto-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0,122,255,0.2);
+}
+
+/* Estilo del Botón Limpiar */
+.limpiar-btn {
+    position: absolute;
+    right: 0.5rem; 
+    padding: 0.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.limpiar-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Botón principal de generar */
+#generar-btn {
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#generar-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Contenedor del código de barras */
+.barcode-container {
+    padding: 1.5rem;
+    border: 1px dashed #ddd;
+    border-radius: var(--border-radius);
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-white);
+}
+
+#barcode {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Contenedor de Botones de Acción */
+.action-buttons-container {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+.action-buttons-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.action-buttons-container button:active {
+    transform: scale(0.98);
+}
+
+/* Botón Imprimir (Verde) */
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+.btn-primary:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+/* --- REGLAS DE COLOR ACTUALIZADAS --- */
+
+/* Botón Descargar (Amarillo) */
+.btn-download {
+    background-color: var(--color-download);
+    color: #333; /* Texto oscuro para fondo amarillo */
+}
+.btn-download:hover {
+    background-color: var(--color-download-dark);
+}
+
+/* Botón Copiar (Rojo) */
+.btn-copy {
+    background-color: var(--color-copy);
+    color: var(--color-white); /* Texto blanco para fondo rojo */
+}
+.btn-copy:hover {
+    background-color: var(--color-copy-dark);
+}
+/* ------------------------------------- */
+
+
+/* Mensaje Toast */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 1rem;
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    font-size: 1rem;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear, transform 0.5s ease;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    transition: opacity 0.5s linear, transform 0.5s ease;
+}
+
+
+/* Estilos de Impresión */
+@media print {
+    
+    @page {
+        margin: 0;
+        size: auto;
+    }
+
+    body > *:not(.print-container) {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .print-container {
+        display: block !important;
+        width: 90%; 
+        margin: 0 auto;
+    }
+
+    .barcode-container {
+        border: none;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    #barcode {
+        width: 100%;
+        height: auto;
+    }
+}

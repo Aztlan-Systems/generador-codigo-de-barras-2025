@@ -1,0 +1,18 @@
+# Archivos de configuración de IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+._*
+
+# Archivos de log
+*.log
+npm-debug.log*
+
+# Dependencias (en caso de que uses npm en el futuro)
+node_modules/
+package-lock.json
