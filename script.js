@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // --- 3. Función para Limpiar Input (¡ACTUALIZADA!) ---
+    // --- 3. Función para Limpiar Input (CON LA LÓGICA DE NOTIFICACIÓN) ---
     const limpiarInput = () => {
         if (inputTexto.value === "") {
             // Si ya está vacío, muestra una notificación
