@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const botonGenerar = document.getElementById("generar-btn");
     const actionButtons = document.getElementById("action-buttons");
     
-    const botonLimpiar = document.getElementById("limpiar-btn"); // <-- LÓGICA AGREGADA
+    const botonLimpiar = document.getElementById("limpiar-btn"); 
     const botonImprimir = document.getElementById("imprimir-btn");
     const botonDescargar = document.getElementById("download-btn");
     const botonCopiar = document.getElementById("copy-btn");
@@ -50,15 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // --- 3. Función para Limpiar Input ---
+    // --- 3. Función para Limpiar Input (¡ACTUALIZADA!) ---
     const limpiarInput = () => {
-        inputTexto.value = "";
-        inputTexto.focus(); // Pone el cursor de nuevo en el campo
+        if (inputTexto.value === "") {
+            // Si ya está vacío, muestra una notificación
+            mostrarToast("El campo ya está vacío.");
+        } else {
+            // Si tiene texto, límpialo y enfoca
+            inputTexto.value = "";
+            inputTexto.focus(); // Pone el cursor de nuevo en el campo
+        }
     };
 
     // --- 4. Función de Impresión (Corregida) ---
     const imprimirCodigo = () => {
-        // Esta es la lógica que corrige el error de la página en blanco
         const afterPrint = () => {
             originalParent.appendChild(printContainer);
             window.removeEventListener("afterprint", afterPrint);
@@ -138,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 9. Asignación de Eventos ---
     botonGenerar.addEventListener("click", generarCodigo);
-    botonLimpiar.addEventListener("click", limpiarInput); // <-- LÓGICA AGREGADA
+    botonLimpiar.addEventListener("click", limpiarInput); 
     
     inputTexto.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
